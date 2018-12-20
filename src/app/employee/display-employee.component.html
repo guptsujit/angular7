@@ -1,0 +1,28 @@
+<div class="container">
+  <h2>Employee Table</h2>
+         
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+         <th>Contact Preference</th>
+          <th>Phone</th>
+          <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let employee of employeeList;let i = index;">
+        <td>{{employee.firstname}}</td>
+        <td>{{employee.lastname}}</td>
+        <td>{{employee.email}}</td>
+       <td>{{employee.contactpreference}}</td>
+       <td>{{employee.phone}}</td>
+       
+       <td> <a class="main-link btn btn-info" [routerLink]="['/edit',employee.id]"> Edit Employee </a> </td> 
+      </tr>
+     
+    </tbody>
+  </table>
+</div>

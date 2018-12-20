@@ -1,0 +1,151 @@
+<div class="container">
+  <h2>Create Employee</h2>
+  <form class="form-horizontal" [formGroup] = "employeeForm" (ngSubmit)="processFormData()">
+    <div class="form-group" [ngClass] = "{'has-error' : formErrors.firstname}">
+      <label class="control-label col-md-4" for="firstname">Firstname:</label>
+      <div class="col-md-4">
+        <input type="text" class="form-control" id="firstname" placeholder="Enter Firstname" formControlName="firstname" (blur)="validateForm()">
+         <span class="help-block" *ngIf="formErrors.firstname">
+              {{formErrors.firstname}}
+          </span>
+      </div>
+    </div>
+     <input type="hidden" class="form-control" id="id" formControlName="id">
+    {{employeeForm.value | json}}
+     {{employeeForm.get('skills').valid}}
+    <div class="form-group" [ngClass] = "{'has-error' :formErrors.lastname }">
+      <label class="control-label col-md-4" for="lastname">Lastname:</label>
+      <div class="col-md-4">          
+        <input type="text" class="form-control" id="lastname" placeholder="Enter lastname" formControlName="lastname">
+        <span class="help-block" *ngIf="formErrors.lastname">
+              {{formErrors.lastname}}
+          </span>
+      </div>
+    </div>
+
+   
+    <div class="form-group" [ngClass] = "{'has-error' :formErrors.contactpreference }">
+       <label class="control-label col-md-4" for="profiency">Contact Preference:</label>
+      <div class="col-md-8">          
+         <div class="radio-inline">
+            <label>
+      <input type="radio" formControlName="contactpreference" value="email" /> email </label>
+          </div>
+           <div class="radio-inline">
+            <label>
+      <input type="radio" formControlName="contactpreference" value="phone" /> phone </label>
+          </div>
+        
+      </div>
+  <span class="help-block" *ngIf="formErrors.profiency">
+              {{formErrors.contactpreference}}
+          </span>
+      
+     </div>
+
+
+
+      <div formGroupName = "emailGroup">
+       <div class="form-group" [ngClass] = "{'has-error' :formErrors.email }">
+      <label class="control-label col-md-4" for="email">Email:</label>
+      <div class="col-md-4">          
+        <input type="text" class="form-control" id="email" placeholder="Enter Email" formControlName="email">
+         <span class="help-block" *ngIf="formErrors.email">
+              {{formErrors.email}}
+          </span>
+      </div>
+    </div>
+  <div class="form-group" [ngClass] = "{'has-error' :formErrors.confirmEmail || formErrors.emailGroup}">
+      <label class="control-label col-md-4" for="confirmEmail">confirm Email:</label>
+      <div class="col-md-4">          
+        <input type="text" class="form-control" id="confirmEmail" placeholder="Enter confirm Email" formControlName="confirmEmail">
+         <span class="help-block" *ngIf="formErrors.confirmEmail || formErrors.emailGroup">
+              {{formErrors.confirmEmail}}
+               {{formErrors.emailGroup}}
+          </span>
+      </div>
+    </div>
+    </div>
+
+  <div class="form-group" [ngClass] = "{'has-error' :formErrors.phone }">
+      <label class="control-label col-md-4" for="phone">Phone:</label>
+      <div class="col-md-4">          
+        <input type="text" class="form-control" id="phone" placeholder="Enter Phone" formControlName="phone">
+         <span class="help-block" *ngIf="formErrors.phone">
+              {{formErrors.phone}}
+          </span>
+      </div>
+    </div>
+       <div class="form-group">   
+                  
+      <div class="col-md-8 col-md-offset-4">
+        <button  class="btn btn-primary" (click)="addMoreSkills()">Add New Skills</button>
+      </div>
+    </div>
+
+<div formArrayName="skills" *ngFor="let newskill of employeeForm.get('skills')?.controls;let i =index;">
+  <hr *ngIf="i>0">
+  <div class="form-group">   
+                  
+      <div class="col-md-8 col-md-offset-4" *ngIf="i>0">
+        <button  class="btn btn-primary" (click)="removeSkills(i)">Delete Skills</button>
+      </div>
+    </div>
+<div [formGroupName]="i">
+  
+    <div class="form-group" [ngClass] = "{'has-error' :newskill.get('skill').errors?.required && newskill.get('skill').touched}">
+
+      <label class="control-label col-md-4" [attr.for]='"skill"+i'>Skills:</label>
+      <div class="col-md-2">          
+        <input type="text" class="form-control" [id]='"skill"+i' placeholder="Enter skill" formControlName="skill">
+        <span class="help-block" *ngIf="newskill.get('skill').errors?.required && newskill.get('skill').touched">
+             This is a required field
+          </span>
+      </div>
+     </div>  
+     <div class="form-group" [ngClass] = "{'has-error' :newskill.get('experience').errors?.required && newskill.get('experience').touched }">
+       <label class="control-label col-md-4" [attr.for]='"experience"+i'>Experience in years:</label>
+      <div class="col-md-2">          
+        <input type="text" class="form-control" [id]='"experience"+i' placeholder="Enter experience" formControlName="experience">
+        <span class="help-block" *ngIf="newskill.get('experience').errors?.required && newskill.get('experience').touched">
+             This is a required field
+          </span>
+      </div>
+     </div>
+   <div class="form-group" [ngClass] = "{'has-error' :newskill.get('profiency').errors?.required && newskill.get('profiency').touched }">
+       <label class="control-label col-md-4" for="profiency">Profiency:</label>
+      <div class="col-md-8">          
+         <div class="radio-inline">
+            <label>
+      <input type="radio" formControlName="profiency" value="beginner" /> Beginner </label>
+          </div>
+           <div class="radio-inline">
+            <label>
+      <input type="radio" formControlName="profiency" value="intermediate" /> Intermediate </label>
+          </div>
+          <div class="radio-inline">
+          <label>
+      <input type="radio" formControlName="profiency" value="expert" /> Expert </label>
+          </div>
+      </div>
+  <span class="help-block" *ngIf="newskill.get('profiency').errors?.required && newskill.get('profiency').touched">
+             This is a required field
+          </span>
+      
+     </div>
+   </div>
+</div>
+
+ <mat-form-field class="example-full-width">
+      <input matInput placeholder="Favorite food" value="Pizza">
+    </mat-form-field>
+    <div class="form-group">   
+        
+      <div class="col-md-8 col-md-offset-4">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
