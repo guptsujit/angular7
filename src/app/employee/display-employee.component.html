@@ -1,0 +1,50 @@
+<div class="container">
+  
+  <div id="tableDiv">
+   <p class="grid__wrapper">
+  
+  <button (click)="exportButtonHandler()" class="btn btn-info">Export data to Excel</button>
+</p>
+
+
+      <h2>Employee List</h2>
+  <ul class="table" appSortableTable (sorted)="onSorted($event)">
+    <li class="tableHeading">
+      <ul class="tableRow">
+        <li class="tableCell" sortable-column="firstname" sortDirection="asc" >
+          Firstname
+          </li>
+        <li class="tableCell" sortable-column="lastname">Lastname</li>
+        <li class="tableCell" sortable-column="email">Email</li>
+        <li class="tableCell">Phone</li>
+      </ul>
+    </li>
+  </ul>
+  <div class="scroll-table">
+    <ul class="table">
+    <li class="tableBody">
+
+      <ul class="tableRow" *ngFor = "let employee of dataSource;let i = index;">
+        <li class="tableCell">{{employee.firstname}}</li>
+        <li class="tableCell">{{employee.lastname}}</li>
+        <li class="tableCell">{{employee.email}}</li>
+        <li class="tableCell">{{employee.phone}}</li>
+      </ul>
+        
+    </li>  
+       
+  </ul>
+     <mat-paginator [length]="employeeList.length"
+    [pageSize]="pageSize"
+    [pageIndex]="currentPage"
+    [hidePageSize] = true
+    [showFirstLastButtons]="showFirstLastButtons"
+    (page)="pageEvent = handlePage($event)">
+</mat-paginator>
+  </div>
+
+
+</div>
+ 
+</div>
+
