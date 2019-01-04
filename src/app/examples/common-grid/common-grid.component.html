@@ -1,0 +1,44 @@
+
+<div class="container">
+   <!-- <div class="row">
+        <div class="col-sm-12 statistics-container" *ngIf="statistics">
+          <div class="alert alert-info">
+             <b>Statistics:</b> {{statistics.endTime | date: 'yyyy-MM-dd HH:mm aaaaa\'m\''}} | {{statistics.executionTime}}ms | {{statistics.totalItemCount}} items
+         </div>
+        </div>
+        <div class="col-sm-6">
+          <div [class]="status.class" role="alert">
+            <strong>Status: </strong> {{status.text}}
+            <span [hidden]="!processing">
+              <i class="fa fa-refresh fa-spin fa-lg fa-fw"></i>
+            </span>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="alert alert-info">
+            <strong>OData Query:</strong> {{odataQuery}}
+          </div>
+        </div>
+      </div> -->
+      <div class="row table-container">
+      <div class="col-sm-12" *ngIf="filteredConfig.enableExcelDownlaod">
+        <div class="bg-gray">
+
+
+        <button mat-raised-button (click)="exportToExcel('xlsx')">
+          <i class="material-icons">save_alt</i>
+          Export to Excel
+        </button>
+        </div>
+      </div>
+    <div class="col-sm-12">
+        <angular-slickgrid gridId="grid14"
+                          (onAngularGridCreated)="angularGridReady($event)"
+                          [columnDefinitions]="filteredConfig.columnDefinitions"
+                          [gridOptions]="_gridOptions"
+                          [dataset]="dataset">
+      </angular-slickgrid>
+      <!-- <slick-pagination ></slick-pagination> -->
+    </div>
+      </div>
+</div>

@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.italic {
+  font-style: italic;
+}
+.subtitle {
+  font-size: 20px;
+  font-style: italic;
+  color: grey;
+  margin-bottom: 10px;
+}
+.red {
+    color: red;
+}
+.faded {
+    opacity: 0.2;
+}
+.faded:hover {
+    opacity: 0.5;
+}
+
+button{
+    margin:3px;
+}
+
+.slickgrid-container{
+    height:400px!important;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

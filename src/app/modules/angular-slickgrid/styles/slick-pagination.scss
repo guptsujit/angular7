@@ -1,0 +1,97 @@
+/* pagination/pagination variables */
+@import './variables';
+
+
+/* Pagination styling */
+.slick-pagination {
+  width: 100%;
+  height: 34px;
+  padding-top: 30px;
+  vertical-align: middle;
+  font-family: $font-family;
+  font-size: ($font-size-base - 1px);
+  font-weight: 400;
+  color: $pagination-text-color;
+
+  .slick-pagination-nav {
+    display: inline-block;
+    padding: 2px;
+    height: 34px;
+
+    nav {
+      display: inline-block;
+    }
+
+    .slick-page-number {
+      vertical-align: top;
+      margin-top: 0;
+      display: inline-block;
+      padding: 0 5px;
+
+      input {
+        background-color: $pagination-page-input-bgcolor;
+        height: $pagination-page-input-height;
+        width: $pagination-page-input-width;
+        padding: $pagination-page-input-padding;
+        display: inline-block;
+      }
+      a{
+        padding: 13px!important;
+        background-color: #00338d;
+        color: #fff;
+        margin-right: 2px;
+        text-decoration: none!important;
+      }
+    }
+
+    .pagination {
+      display: flex;
+      padding-left: 0;
+      list-style: none;
+      margin: 0;
+    }
+
+    .page-link {
+      position: relative;
+      display: block;
+      
+      line-height: $pagination-line-height;
+      color: $pagination-color;
+      border: 0;
+      text-decoration: none;
+
+      &:hover {
+        z-index: 2;
+        color: $pagination-hover-color;
+      }
+
+      &:focus {
+        z-index: 2;
+      }
+
+      // Opinionated: add "hand" cursor to non-disabled .page-link elements
+      &:not(:disabled):not(.disabled) {
+        cursor: pointer;
+      }
+    }
+
+    .page-item {
+      &.active .page-link {
+        z-index: 1;
+        color: $pagination-active-color;
+       }
+
+      &.disabled .page-link {
+        color: $pagination-disabled-color;
+        pointer-events: none;
+        cursor: auto;
+      }
+    }
+  }
+
+  .slick-pagination-settings {
+    display: block;
+    float: right;
+    padding: 7px 10px 0 0;
+  }
+}

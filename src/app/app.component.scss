@@ -1,0 +1,69 @@
+.body-content {
+  margin-top: 50px;
+}
+.red {
+  color: red;
+}
+.faded {
+    opacity: 0.2;
+}
+.faded:hover {
+    opacity: 0.5;
+}
+.links {
+  background-color: #f9f9f9;
+  border-right: 1px solid #d0d0d0;
+  overflow-y: auto;
+  padding-top: 10px;
+
+  /* the height is 100% minus the 2 navbars */
+  height: calc(100vh - 50px);
+}
+
+li:hover{
+  // background:linear-gradient(45deg,rgba(5,62,84, 1),rgba(5,62,84, 1),rgba(5,62,84, 1),white,rgba(5,62,84, 1));
+transform: scale(1.15 );
+}
+
+li{
+  line-height: 20px;
+  // background-color: red;
+  background: linear-gradient(to right,rgba(5,62,84, 1),rgba(5,62,84, 0.8));
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+li{
+  width: 100%;
+  position: relative;
+  padding: 10px;
+  color: white;
+  margin: 3px;
+  border-radius: 3px;
+}
+
+li a{
+  color: white;
+}
+
+
+#demo-container{
+  background-color:white;
+  width: 100%;
+  color: rgba(5,62,84, 1);
+}
+
+.left-nav{
+  background-color:white;
+}
+.header{
+  background: linear-gradient(to bottom,rgba(5,62,84, 1),rgba(5,62,84, 0.5),white);
+  width: 100%;
+  color: white;
+  height:150px;
+  line-height: 100px;
+  text-align: center;
+  align-content: center;
+  font-size: 45px;
+  font-weight: bolder;
+}

@@ -1,0 +1,46 @@
+@import './slick-grid';
+//@import './slick-controls';
+//@import './slick-editors';
+//@import './slick-plugins';
+//@import './slick-default-theme';
+@import './slick-pagination';
+//@import './slickgrid-examples';
+@import './slick-bootstrap';
+
+
+// ----------------------------------------------
+// Checkbox Selector Plugin
+// ----------------------------------------------
+.slick-headerrow-column,
+.slick-column-name,
+.slick-cell-checkboxsel {
+  input[type=checkbox],
+  #filter-checkbox-selectall-container > input[type=checkbox] {
+    display:none;  /* to hide the checkbox itself */
+  }
+
+  input[type=checkbox],
+  #filter-checkbox-selectall-container > input[type=checkbox] + label {
+    margin-left: 4px;
+    margin-top: 3px;
+  }
+
+  input[type=checkbox] + label:before,
+  #filter-checkbox-selectall-container > input[type=checkbox] + label:before {
+    cursor: pointer;
+    content: $checkbox-selector-icon;
+    color: $checkbox-selector-color;
+    font-weight: bold;
+    opacity: $checkbox-selector-opacity; /* unchecked icon */
+  }
+
+  input[type=checkbox] + label:hover:before,
+  #filter-checkbox-selectall-container > input[type=checkbox] + label:hover:before {
+    opacity: $checkbox-selector-opacity-hover;
+  }
+
+  input[type=checkbox]:checked + label:before,
+  #filter-checkbox-selectall-container > input[type=checkbox]:checked + label:before {
+    opacity: 1; /* checked icon */
+  }
+}

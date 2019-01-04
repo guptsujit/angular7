@@ -1,0 +1,21 @@
+
+<mat-card>
+    <div class="example-container">
+        <mat-checkbox [(ngModel)]="Sorting"  id="enableSorting" (change)="FilterChanged();">
+            Sorting
+        </mat-checkbox>
+        <mat-checkbox [(ngModel)]="Filtering"  id="enableFiltering" (change)="FilterChanged();">
+            Filtering
+        </mat-checkbox>
+        <mat-checkbox [(ngModel)]="Paging"  id="enablePaging" (change)="FilterChanged();">
+            Paging
+        </mat-checkbox>
+        <mat-checkbox [(ngModel)]="ExcelDownlaod"  id="enableExcelDownlaod" (change)="FilterChanged();">
+            Download to Excel
+        </mat-checkbox>
+        <button mat-flat-button color="primary" (click)="loadData();"> Load Data</button>
+    </div>
+     
+    <common-grid *ngIf="Load" [filteredConfig]="filteredConfig"></common-grid>
+</mat-card>
+
